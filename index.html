@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Draw Some Solver</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="text/css" rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/static/json2.js"></script>
+    <script type="text/javascript" src="/static/script.js"></script>
+	<style>
+	a:hover {
+		text-decoration: none;
+	}
+	h1 {
+		text-align: center;
+		margin: 15px;
+	}
+	h6 {
+		text-align: right;
+	}
+	#wrapper {
+		width: 300px;
+	}
+	.form-horizontal .control-label {
+		width: 90px;
+	}
+	.form-horizontal .controls {
+		margin-left: 110px;
+	}
+	.form-horizontal .form-actions {
+		padding-left: 105px;
+		padding-top: 10px;
+		padding-bottom: 11px;
+	}
+	.table th, .table td {
+		text-align: center;
+	}
+	.span2 {
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		width: 140px;
+	}
+	</style>
+	<script type="text/javascript">
+	function countWord(element) {
+		$('letter-count').innerHTML = element.value.length;
+	}
+	</script>
+</head>
+  <body>
+	<div id="wrapper" class="container">
+	<h1><a href="/">Draw Some Solver</a></h1>
+    <div class="form-horizontal">
+      <fieldset>
+		<legend></legend>
+		<div class="control-group">
+			<label class="control-label" for="input-letters">Letters Given</label>
+			<div class="controls">
+				<div class="input-append">
+				<input type="text" id="input-letters" class="span2" placeholder="type no space..." onkeyup="countWord(this)" autocorrect="off">
+				<span id="letter-count" class="add-on">0</span>
+				<p class="help-block">All letters in question</p>
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="input-length">Target Length</label>
+			<div class="controls">
+				<select id="input-length" class="span2">
+					{% for i in length_range %}
+					<option value="{{ i }}">{{ i }}</option>
+					{% endfor %}
+				</select>
+				<p class="help-block">Length of the word in question</p>
+			</div>
+		</div>
+		<div class="form-actions">
+			<button class="btn btn-primary" value="FindWords" onclick="doFindWords()">Find Words</button>
+		</div>
+	  </fieldset>
+    </div>
+	<table id="result-table" class="table">
+		<thead>
+			<tr><th>Result</th></tr>
+		</thead>
+		<tbody id="result">
+		</tbody>
+	</table>
+	<h6><a href="http://40stgeorge.net">by Eric Zhu</a></h6>
+	</div>
+  </body>
+</html>
